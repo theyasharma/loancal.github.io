@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loan-calculator</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+
+    }
+    
+    #loancal{
+        margin-top: 200px;
+        margin-left: 20px;
+        padding-top: 20px;
+        text-align: center;
+        border-bottom: 5px solid black;
+        border-top: 3px solid black;
+        border-radius: 50px;
+        z-index: 1;
+        
+        
+    }
+  
+    h1{
+        color: #FF0033;
+    }
+    #payment{
+        color: #bfff00;
+        background-color: black;
+        border-bottom: 5px solid black;
+        border-top: 3px solid black;
+        border-radius: 50px;
+        
+        text-align: center;
+        justify-content: center;
+    }
+
+    #loancal p{
+        padding: 10px;
+    }
+    #loancal::before{
+    content: "";
+    background:url(bg1.jpg) no-repeat center/cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0.79  ;
+    }
+   
+    .link{
+        color: #0000FF;
+        text-decoration: none;
+        text-align: center;
+        justify-content: center;
+        margin-left: 20px;
+    }
+</style>
+<body>
+   
+
+    <div id="loancal">
+        <h1>LOAN CALCULATOR</h1>
+        <p>LOAN AMOUNT:&#8377<input id="amount" type="number" onchange="computeLoan()"></p>
+        <p>INTEREST RATE:%<input id="interest" type="number" min="1" max="100"   value="3" step=".1" onchange="computeLoan()"></p>
+        <p>MONTHS TO PAY:<input id="months" type="number" min="1" max="300" value="1" step="1" onchange="computeLoan()"></p>
+
+        <h2 id="payment"></h2>
+    </div>
+
+    <footer class="link">
+        <h1 class="link">IF YOU LIKE MY WORK <a class="link" href="https://www.linkedin.com/in/yash-sharma-16634a202/"> CLICK</a> HERE</h1>
+    </footer>
+    
+
+
+    <script>
+        function computeLoan(){
+            var amount=document.getElementById('amount').value;
+            var interest=document.getElementById('interest').value;
+            var months=document.getElementById('months').value;
+            var value= (amount*(interest*.01))/months;
+            var payment=((amount/months)+value).toFixed(2);
+            document.getElementById('payment').innerHTML ="monthly payment= &#8377 "+payment;
+        }
+
+
+    </script>
+</body>
+</html>
